@@ -1,0 +1,46 @@
+2024-02-26 14:56:55:276 grammar LogManager.java:25 before: (COMBINED_GRAMMAR Dixy (RULES (RULE main (BLOCK (ALT LETS RUN LLAVEA (? (BLOCK (ALT content))) LLAVEC))) (RULE content (BLOCK (ALT (+ (BLOCK (ALT declara)))))) (RULE declara (BLOCK (ALT COMP ID (? (BLOCK (ALT EQU expr))) SC))) (RULE expr (BLOCK (ALT expr (= operation (BLOCK (ALT ASTE) (ALT DIA))) expr) (ALT expr (= operation (BLOCK (ALT SUM) (ALT RES))) expr) (ALT INT) (ALT PARA expr PARC) (ALT ID))) (RULE LETS (BLOCK (ALT 'lets'))) (RULE RUN (BLOCK (ALT 'run'))) (RULE COMP (BLOCK (ALT 'comp'))) (RULE ASTE (BLOCK (ALT '*'))) (RULE DIA (BLOCK (ALT '/'))) (RULE RES (BLOCK (ALT '-'))) (RULE SUM (BLOCK (ALT '+'))) (RULE EQU (BLOCK (ALT '='))) (RULE LLAVEA (BLOCK (ALT '{'))) (RULE LLAVEC (BLOCK (ALT '}'))) (RULE DOT (BLOCK (ALT '.'))) (RULE ID (BLOCK (ALT (+ (BLOCK (ALT [a-zA-Z])))))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE PARA (BLOCK (ALT '('))) (RULE PARC (BLOCK (ALT ')'))) (RULE SC (BLOCK (ALT ';'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2024-02-26 14:56:55:306 grammar LogManager.java:25 after: (COMBINED_GRAMMAR Dixy (RULES (RULE main (BLOCK (ALT LETS RUN LLAVEA (? (BLOCK (ALT content))) LLAVEC))) (RULE content (BLOCK (ALT (+ (BLOCK (ALT declara)))))) (RULE declara (BLOCK (ALT COMP ID (? (BLOCK (ALT EQU expr))) SC))) (RULE expr (BLOCK (ALT expr (= operation (SET ASTE DIA)) expr) (ALT expr (= operation (SET SUM RES)) expr) (ALT INT) (ALT PARA expr PARC) (ALT ID))) (RULE LETS (BLOCK (ALT 'lets'))) (RULE RUN (BLOCK (ALT 'run'))) (RULE COMP (BLOCK (ALT 'comp'))) (RULE ASTE (BLOCK (ALT '*'))) (RULE DIA (BLOCK (ALT '/'))) (RULE RES (BLOCK (ALT '-'))) (RULE SUM (BLOCK (ALT '+'))) (RULE EQU (BLOCK (ALT '='))) (RULE LLAVEA (BLOCK (ALT '{'))) (RULE LLAVEC (BLOCK (ALT '}'))) (RULE DOT (BLOCK (ALT '.'))) (RULE ID (BLOCK (ALT (+ (BLOCK (ALT [a-zA-Z])))))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE PARA (BLOCK (ALT '('))) (RULE PARC (BLOCK (ALT ')'))) (RULE SC (BLOCK (ALT ';'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2024-02-26 14:56:55:354 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR Dixy (RULES (RULE main (BLOCK (ALT LETS RUN LLAVEA (? (BLOCK (ALT content))) LLAVEC))) (RULE content (BLOCK (ALT (+ (BLOCK (ALT declara)))))) (RULE declara (BLOCK (ALT COMP ID (? (BLOCK (ALT EQU expr))) SC))) (RULE expr (BLOCK (ALT expr (= operation (SET ASTE DIA)) expr) (ALT expr (= operation (SET SUM RES)) expr) (ALT INT) (ALT PARA expr PARC) (ALT ID)))))
+2024-02-26 14:56:55:354 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR DixyLexer (RULES (RULE LETS (BLOCK (ALT 'lets'))) (RULE RUN (BLOCK (ALT 'run'))) (RULE COMP (BLOCK (ALT 'comp'))) (RULE ASTE (BLOCK (ALT '*'))) (RULE DIA (BLOCK (ALT '/'))) (RULE RES (BLOCK (ALT '-'))) (RULE SUM (BLOCK (ALT '+'))) (RULE EQU (BLOCK (ALT '='))) (RULE LLAVEA (BLOCK (ALT '{'))) (RULE LLAVEC (BLOCK (ALT '}'))) (RULE DOT (BLOCK (ALT '.'))) (RULE ID (BLOCK (ALT (+ (BLOCK (ALT [a-zA-Z])))))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE PARA (BLOCK (ALT '('))) (RULE PARC (BLOCK (ALT ')'))) (RULE SC (BLOCK (ALT ';'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2024-02-26 14:56:55:944 left-recursion LogManager.java:25 expr
+    :   ( {} INT<tokenIndex=81>  
+        | PARA<tokenIndex=88> expr<tokenIndex=90> PARC<tokenIndex=92>  
+        | ID<tokenIndex=99>   
+        )
+        (
+          {this.precpred(this._ctx, 5)}?<p=5> operation=(ASTE<tokenIndex=52>|DIA<tokenIndex=54>) expr<tokenIndex=57,p=6>
+                  | {this.precpred(this._ctx, 4)}?<p=4> operation=(SUM<tokenIndex=69>|RES<tokenIndex=71>) expr<tokenIndex=74,p=5>
+        )*
+    ;
+2024-02-26 14:56:55:963 grammar LogManager.java:25 added: (RULE expr (BLOCK (ALT (BLOCK (ALT {} (INT (ELEMENT_OPTIONS (= tokenIndex 81)))) (ALT (PARA (ELEMENT_OPTIONS (= tokenIndex 88))) (expr (ELEMENT_OPTIONS (= tokenIndex 90))) (PARC (ELEMENT_OPTIONS (= tokenIndex 92)))) (ALT (ID (ELEMENT_OPTIONS (= tokenIndex 99))))) (* (BLOCK (ALT ({this.precpred(this._ctx, 5)}? (ELEMENT_OPTIONS (= p 5))) (= operation (SET (ASTE (ELEMENT_OPTIONS (= tokenIndex 52))) (DIA (ELEMENT_OPTIONS (= tokenIndex 54))))) (expr (ELEMENT_OPTIONS (= tokenIndex 57) (= p 6)))) (ALT ({this.precpred(this._ctx, 4)}? (ELEMENT_OPTIONS (= p 4))) (= operation (SET (SUM (ELEMENT_OPTIONS (= tokenIndex 69))) (RES (ELEMENT_OPTIONS (= tokenIndex 71))))) (expr (ELEMENT_OPTIONS (= tokenIndex 74) (= p 5)))))))))
+2024-02-26 14:56:55:972 semantics LogManager.java:25 tokens={EOF=-1, LETS=1, RUN=2, COMP=3, ASTE=4, DIA=5, RES=6, SUM=7, EQU=8, LLAVEA=9, LLAVEC=10, DOT=11, ID=12, INT=13, PARA=14, PARC=15, SC=16, WS=17}
+2024-02-26 14:56:55:972 semantics LogManager.java:25 strings={'lets'=1, 'run'=2, 'comp'=3, '*'=4, '/'=5, '-'=6, '+'=7, '='=8, '{'=9, '}'=10, '.'=11, '('=14, ')'=15, ';'=16}
+2024-02-26 14:56:55:991 LL1 LogManager.java:25 
+DECISION 0 in rule main
+2024-02-26 14:56:55:991 LL1 LogManager.java:25 look=[3, 10]
+2024-02-26 14:56:55:992 LL1 LogManager.java:25 LL(1)? true
+2024-02-26 14:56:55:992 LL1 LogManager.java:25 
+DECISION 1 in rule content
+2024-02-26 14:56:55:992 LL1 LogManager.java:25 look=[3, 10]
+2024-02-26 14:56:55:992 LL1 LogManager.java:25 LL(1)? true
+2024-02-26 14:56:55:992 LL1 LogManager.java:25 
+DECISION 2 in rule declara
+2024-02-26 14:56:55:992 LL1 LogManager.java:25 look=[8, 16]
+2024-02-26 14:56:55:992 LL1 LogManager.java:25 LL(1)? true
+2024-02-26 14:56:55:992 LL1 LogManager.java:25 
+DECISION 3 in rule expr
+2024-02-26 14:56:55:993 LL1 LogManager.java:25 look=[13, 14, 12]
+2024-02-26 14:56:55:993 LL1 LogManager.java:25 LL(1)? true
+2024-02-26 14:56:55:993 LL1 LogManager.java:25 
+DECISION 4 in rule expr
+2024-02-26 14:56:55:993 LL1 LogManager.java:25 look=[null, null]
+2024-02-26 14:56:55:993 LL1 LogManager.java:25 LL(1)? false
+2024-02-26 14:56:55:993 LL1 LogManager.java:25 
+DECISION 5 in rule expr
+2024-02-26 14:56:55:993 LL1 LogManager.java:25 look=[null, null]
+2024-02-26 14:56:55:993 LL1 LogManager.java:25 LL(1)? false
+2024-02-26 14:56:56:046 action-translator LogManager.java:25 translate 
+2024-02-26 14:56:56:048 action-translator LogManager.java:25 translate this.precpred(this._ctx, 5)
+2024-02-26 14:56:56:048 action-translator LogManager.java:25 translate this.precpred(this._ctx, 4)
+2024-02-26 14:56:56:053 action-translator LogManager.java:25 translate this.precpred(this._ctx, 5)
+2024-02-26 14:56:56:053 action-translator LogManager.java:25 translate this.precpred(this._ctx, 4)
